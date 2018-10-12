@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.skilldistillery.film.entities.Film;
 
-public class FilmIMPDAO implements DatabaseAccessor {
+public class FilmIMPDAO implements FilmDAO {
 	
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 	
