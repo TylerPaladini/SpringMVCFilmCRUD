@@ -1,6 +1,7 @@
 package com.skilldistillery.film.controllers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,11 @@ public class FilmController {
 	public ModelAndView getFilmById(int FilmId) {
 
 		ModelAndView mv = new ModelAndView();
-		Film fSearch;
+		List<Film> fList = new ArrayList<>();
 		try {
-			fSearch = fdao.getFilmById(FilmId);
-			mv.addObject("film", fSearch);
+			Film fSearch = fdao.getFilmById(FilmId);
+			fList.add(fSearch);
+			mv.addObject("film", fList);
 			mv.setViewName("WEB-INF/views/results.jsp");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,6 +46,7 @@ public class FilmController {
 			kSearch = fdao.getFilmByKeyword(keyword);
 			mv.addObject("film", kSearch);
 			mv.setViewName("WEB-INF/views/results.jsp");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
