@@ -21,10 +21,10 @@ public class FilmController {
 	
 	
 	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "FilmId")
-	public ModelAndView getFilmById( int filmId ) throws SQLException {
+	public ModelAndView getFilmById( int FilmId ) throws SQLException {
 		
 		ModelAndView mv = new ModelAndView();
-		Film fSearch = fdao.getFilmById(filmId);
+		Film fSearch = fdao.getFilmById(FilmId);
 		mv.addObject("film", fSearch);
 		mv.setViewName("WEB_INF/views/home.jsp");
 		
