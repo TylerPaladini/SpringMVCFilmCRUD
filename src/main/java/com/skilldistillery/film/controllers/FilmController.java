@@ -20,7 +20,7 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "FilmId")
+	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET)
 	public ModelAndView getFilmById( int FilmId ) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -28,7 +28,7 @@ public class FilmController {
 		try {
 			fSearch = fdao.getFilmById(FilmId);
 			mv.addObject("film", fSearch);
-			mv.setViewName("WEB_INF/views/home.jsp");
+			mv.setViewName("WEB-INF/views/home.jsp");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
