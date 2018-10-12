@@ -40,7 +40,7 @@ public class FilmController {
 	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
 	public ModelAndView getFilmByKeyword(String keyword) {
 		ModelAndView mv = new ModelAndView();
-		List<Film> kSearch;
+		List<Film> kSearch = new ArrayList<>();
 
 		try {
 			kSearch = fdao.getFilmByKeyword(keyword);
