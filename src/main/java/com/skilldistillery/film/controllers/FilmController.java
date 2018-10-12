@@ -19,17 +19,22 @@ public class FilmController {
 	
 	
 	@RequestMapping( path= "XXX", method = RequestMethod.GET, params= "filmId")
-	
 	public ModelAndView getFilmById( int filmId ) {
 		
 		ModelAndView mv = new ModelAndView();
-		
+		Film fSearch = fdao.filmById(filmId);
+		mv.addObject("film", fSearch);
+		mv.setViewName("WEB_INF/views/home.jsp");
 		
 		
 		return null;
 		
 		
 		
+	}
+	@RequestMapping("index.do")
+	public String index() {
+		return "/WEB-INF/views/home.jsp";
 	}
 	
 }
