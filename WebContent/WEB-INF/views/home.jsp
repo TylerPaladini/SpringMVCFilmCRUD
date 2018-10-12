@@ -15,10 +15,10 @@
 		<input type="text" name="FilmId" size="4"/> 
 		<input type="submit" value="Search" />
 		
-		<h4>Search Film by Keyword</h4>
+		<!-- <h4>Search Film by Keyword</h4>
 		Keyword:
 		<input>type="text" name="keyword"/>
-		<input>type="submit" value="Search/>
+		 --><input>type="submit" value="Search/>
 		
 	 ${film}
 		
