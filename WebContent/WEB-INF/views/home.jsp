@@ -13,6 +13,8 @@
 	  	ID:
 		<input type="text" name="FilmId" size="4"/> 
 		<input type="submit" value="Search" />
+		
+		${film}
 	</form>
 
 
