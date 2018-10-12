@@ -40,9 +40,7 @@ dependencies {
 }
 
 eclipse {
-  classpath {
-    downloadSources = true
-  }
+
   project  {
     natures 'org.springframework.ide.eclipse.core.springnature',
             'org.eclipse.buildship.core.gradleprojectnature'
