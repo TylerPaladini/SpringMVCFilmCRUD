@@ -27,10 +27,7 @@ public class FilmController {
 		mv.setViewName("WEB_INF/views/home.jsp");
 		
 		
-		return null;
-		
-		
-		
+		return mv;
 	}
 	
 }
