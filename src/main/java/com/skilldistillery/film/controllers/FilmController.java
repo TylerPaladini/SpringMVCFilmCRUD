@@ -20,7 +20,7 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "filmId")
+	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "FilmId")
 	public ModelAndView getFilmById( int filmId ) throws SQLException {
 		
 		ModelAndView mv = new ModelAndView();
