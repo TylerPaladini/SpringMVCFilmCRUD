@@ -15,14 +15,19 @@
 		<input type="text" name="FilmId" size="4"/> 
 		<input type="submit" value="Search" />
 		
-		<!-- <h4>Search Film by Keyword</h4>
-		Keyword:
-		<input>type="text" name="keyword"/>
-		 --><input>type="submit" value="Search/>
-		
-	 ${film}
-		
+	 
+	
 	</form>
+		
+	<form action="GetKeyword.do" method="GET">
+		<h4>Search Film by Keyword</h4><br>
+		Keyword:
+		<input type="text" name="Keyword" />
+		<input type="submit" value="Search" />
+	</form>
+		
+		
+		
 		
 		
 		
