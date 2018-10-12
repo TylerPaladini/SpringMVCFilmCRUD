@@ -21,15 +21,26 @@ public class FilmController {
 	
 	
 	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "FilmId")
-	public ModelAndView getFilmById( int FilmId ) throws SQLException {
+	public ModelAndView getFilmById( int FilmId ) {
 		
 		ModelAndView mv = new ModelAndView();
-		Film fSearch = fdao.getFilmById(FilmId);
-		mv.addObject("film", fSearch);
-		mv.setViewName("WEB_INF/views/home.jsp");
+		Film fSearch;
+		try {
+			fSearch = fdao.getFilmById(FilmId);
+			mv.addObject("film", fSearch);
+			mv.setViewName("WEB_INF/views/home.jsp");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return mv;
+	}
+	
+	@RequestMapping( "index.do")
+	public String index() {
+		return "/WEB-INF/views/home.jsp";
 	}
 	
 }
