@@ -18,7 +18,7 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping( path= "index.do", method = RequestMethod.GET, params= "filmId")
+	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "filmId")
 	public ModelAndView getFilmById( int filmId ) {
 		
 		ModelAndView mv = new ModelAndView();
