@@ -18,7 +18,7 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping( path= "XXX", method = RequestMethod.GET, params= "filmId")
+	@RequestMapping( path= "index.do", method = RequestMethod.GET, params= "filmId")
 	public ModelAndView getFilmById( int filmId ) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -31,10 +31,6 @@ public class FilmController {
 		
 		
 		
-	}
-	@RequestMapping("index.do")
-	public String index() {
-		return "/WEB-INF/views/home.jsp";
 	}
 	
 }
