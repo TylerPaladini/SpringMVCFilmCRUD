@@ -7,9 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.film.entities.Film;
-import com.skilldistillery.filmquery.entities.Actor;
+import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Film;
+
+@Repository
 public class FilmIMPDAO implements FilmDAO {
 	
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
@@ -57,9 +60,9 @@ public class FilmIMPDAO implements FilmDAO {
 				String rating = rs.getString("rating");
 				String features = rs.getString("special_features");
 				List<Actor> actor = new ArrayList<>();
-				cast = getActorsByFilmId(filmId);
-				output = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
-						features, actor);
+//				cast = getActorsByFilmId(filmId);
+//				output = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
+//						features);
 			}
 			rs.close();
 			stmt.close();
