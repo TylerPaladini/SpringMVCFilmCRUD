@@ -95,13 +95,50 @@ public class FilmIMPDAO implements FilmDAO {
 
         return list;
     }
+	
 
 
 	@Override
-	public List<Film> getFilmByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Film> getFilmByKeyword(String keyword) throws SQLException {
+		List<Film> films = new ArrayList<>();
+		Film film = null;
+		Actor actor = null;
+		String sql = "select film.id, title, description, release_year, language.name, rental_duration, rental_rate, length, replacement_cost,"
+				+ " rating, special_features " + "  from film join language on film.language_id = language.id "
+				+ "where title like ? or description like ?";
+		Connection conn = DriverManager.getConnection(URL, user, pass);
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, "%" + keyword + "%");
+		stmt.setString(2, "%" + keyword + "%");
+		ResultSet filmResult = stmt.executeQuery();
+		while (filmResult.next()) {
+			film = new Film();
+
+			film.setId(filmResult.getInt("film.id"));
+			film.setTitle(filmResult.getString("title"));
+			film.setDescription(filmResult.getString("description"));
+			film.setReleaseYear(filmResult.getInt("release_year"));
+			film.setLanguage(filmResult.getString("language.name"));
+			film.setRentalDuration(filmResult.getInt("rental_duration"));
+			film.setRentalRate(filmResult.getDouble("rental_rate"));
+			film.setLength(filmResult.getInt("length"));
+			film.setReplacementCost(filmResult.getDouble("replacement_cost"));
+			film.setRating(filmResult.getString("rating"));
+			film.setSpecialFeature(filmResult.getString("special_features"));
+			// actor.setId( filmResult.getInt( "actor.id" ));
+			// actor.setFirstName(filmResult.getString( "actor.first_name" ));
+			// actor.setLastName(filmResult.getString( "actor.last_name" ));
+			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
+			films.add(film);
+
+		}
+		filmResult.close();
+		stmt.close();
+		conn.close();
+		return films;
+
 	}
+	
 
 	@Override
 	public Film addFilm(Film film) {
