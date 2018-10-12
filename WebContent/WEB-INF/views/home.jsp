@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MVCFilmSite</title>
 </head>
 <body>
+
+<form action="GetFilm.do" method="GET">
+	  	<h3>Search By Film ID</h3><br>
+	  	ID:
+		<input type="text" name="FilmId" size="4"/> 
+		<input type="submit" value="Search" />
+	</form>
+
+
 
 </body>
 </html>
