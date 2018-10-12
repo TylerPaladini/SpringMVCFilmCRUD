@@ -1,5 +1,7 @@
 package com.skilldistillery.film.controllers;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +20,16 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping( path= "index.do", method = RequestMethod.GET, params= "filmId")
-	public ModelAndView getFilmById( int filmId ) {
+	@RequestMapping( path= "GetFilm.do", method = RequestMethod.GET, params= "filmId")
+	public ModelAndView getFilmById( int filmId ) throws SQLException {
 		
 		ModelAndView mv = new ModelAndView();
-		Film fSearch = fdao.filmById(filmId);
+		Film fSearch = fdao.getFilmById(filmId);
 		mv.addObject("film", fSearch);
 		mv.setViewName("WEB_INF/views/home.jsp");
 		
 		
-		return null;
-		
-		
-		
+		return mv;
 	}
 	
 }
