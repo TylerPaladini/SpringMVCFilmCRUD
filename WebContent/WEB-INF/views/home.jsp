@@ -47,11 +47,10 @@
             <label for="filmLength">Length of Film</label> 
             <input type="text" name="FilmLength" size="60"/><br>      
             
-                
+                <input type="submit">
+                </form>
             
-    		<input type="submit">
-        
-		</form>
+    		
        
 </body>
 </html>

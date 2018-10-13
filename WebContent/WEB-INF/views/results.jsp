@@ -17,6 +17,17 @@
 ${filmItem} <br>
 </c:forEach>
 
+
+		
+		<form action="deleteFilm.do" method="POST">
+		
+		
+		
+		<input type="Submit" value="Delete Film"/>
+		
+		
+		</form>
+
 	
 
 </body>
