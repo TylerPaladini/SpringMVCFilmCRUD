@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Film;
@@ -36,14 +37,15 @@ public class FilmController {
 		return mv;
 	}
 
-	// public List<Film> getFilmByKeyword(String keyword)
-	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-	public ModelAndView getFilmByKeyword(String keyword) {
+	
+	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET, params = "Keyword")
+	public ModelAndView getFilmByKeyword(String Keyword) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> kSearch = new ArrayList<>();
 
 		try {
-			kSearch = fdao.getFilmByKeyword(keyword);
+			kSearch = fdao.getFilmByKeyword( Keyword );
+			System.out.println("*******************" + kSearch);
 			mv.addObject("film", kSearch);
 			mv.setViewName("WEB-INF/views/results.jsp");
 			
@@ -52,6 +54,57 @@ public class FilmController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(path = "newFilm.do", method = RequestMethod.POST, 
+			params = {"Title", "Description", "ReleaseYear", "FilmLength", "SpecialFeatures"})
+	public ModelAndView addFilm ( String Title, String Description, int ReleaseYear,  int FilmLength, String SpecialFeatures, RedirectAttributes redir) {
+		
+		Film newFilm = new Film(0,Title, Description, ReleaseYear, "1", 0, 2.99, FilmLength, 5.99, "G", SpecialFeatures, null);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		try {
+			boolean added = fdao.addFilm( newFilm );
+			redir.addFlashAttribute("filmAdd", added );
+			mv.setViewName("filmAdded.do");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mv;
+		
+		
+	}
+	@RequestMapping( path ="filmAdded.do", method=RequestMethod.GET)
+	public ModelAndView filmAdded () {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/views/home.jsp");
+		
+		return mv;
+		
+	}
+//	
+//	@RequestMapping( path="deleteFilm.do",method = RequestMethod.POST )
+//	public ModelAndView deleteFilm( String keyword, RedirectAttributes redir) {
+//		boolean deleted = fdao.deleteFilm(keyword);
+//		ModelAndView mv = new ModelAndView();
+//		redir.addFlashAttribute("deleted", deleted );
+//		mv.setViewName("filmDeleted.do");
+//		
+//		return mv;
+//		
+//	}
+//	@RequestMapping( path ="filmDeleted.do", method=RequestMethod.GET)
+//	public ModelAndView filmDeleted () {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/WEB-INF/views/home.jsp");
+//		
+//		return mv;
+//		
+//	}
+//	
+	
+	
 
 	@RequestMapping("index.do")
 	public String index() {

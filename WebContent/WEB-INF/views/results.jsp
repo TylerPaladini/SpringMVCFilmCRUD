@@ -13,6 +13,7 @@
 
 
 <c:forEach items="${film}" var="filmItem">
+
 ${filmItem} <br>
 </c:forEach>
 

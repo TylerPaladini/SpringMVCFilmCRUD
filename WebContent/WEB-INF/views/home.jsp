@@ -20,7 +20,7 @@
 		<h4>Search Film by Keyword</h4><br>
 		Keyword:
 		<input type="text" name="Keyword" />
-		<input type="submit" value="Search" />
+		<input type="submit" value="Search" /> 
 	</form>
 	
 <!-- 	<form action="AddFilm" method="POST">
