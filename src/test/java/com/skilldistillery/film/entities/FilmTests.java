@@ -21,7 +21,11 @@ public class FilmTests {
 		try {
 			
 			FilmIMPDAO dao = new FilmIMPDAO();
-			List list = dao.getFilmByKeyword("laska");
+			List list = dao.getFilmByKeyword("killer");
+			
+			for (Object object : list) {
+				System.out.println(object.toString());
+			}
 
 			assertEquals("test", "tes");
 			
@@ -30,21 +34,6 @@ public class FilmTests {
 		}
 	}
 	
-	@Test
-	public void test2() {
-		try {
-			
-			FilmIMPDAO dao = new FilmIMPDAO();
-			List list = dao.getActorsByFilmId(3);
-			
-			assertEquals("test", "tes");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
 
 
 
