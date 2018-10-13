@@ -17,18 +17,40 @@ public class FilmTests {
 
 
 	@Test
-	public void testCreate() {
+	public void test_getFilmByKeyword() {
 		try {
-			
+
 			FilmIMPDAO dao = new FilmIMPDAO();
 			List list = dao.getFilmByKeyword("killer");
+
+//			for (Object object : list) {
+//				System.out.println(object.toString());
+//			}
+
+			assertEquals(2, dao.getFilmByKeyword("killer").size());
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void test_addFilm() {
+		try {
+			Film newFilm = new Film();
+			newFilm.setTitle("Test01");
+			newFilm.setDescription("Description test 01");
+
+			FilmIMPDAO dao = new FilmIMPDAO();
+			dao.addFilm(newFilm);
+			
+			List list = dao.getFilmByKeyword("test");
 			
 			for (Object object : list) {
 				System.out.println(object.toString());
 			}
-
-			assertEquals("test", "tes");
 			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

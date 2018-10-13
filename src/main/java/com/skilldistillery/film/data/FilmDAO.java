@@ -9,7 +9,7 @@ import com.skilldistillery.film.entities.Film;
 public interface FilmDAO {
 	
 	public List<Film> getFilmByKeyword(String keyword) throws SQLException;
-	public boolean addFilm(Film film);
+	public boolean addFilm(Film film) throws SQLException;
 	Film getFilmById(int filmId) throws SQLException;
 	List<Actor> getActorsByFilmId(int filmId) throws SQLException;
 
