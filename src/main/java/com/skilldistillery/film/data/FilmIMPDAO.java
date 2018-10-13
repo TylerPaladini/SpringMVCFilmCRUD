@@ -204,4 +204,80 @@ public boolean deleteFilm ( int filmId ) throws SQLException {
 		return false;
 	}
 
+//UPDATE film
+//SET title = "traci", description="aaa" , release_year=2007, language_id="1", rental_duration =30, rental_rate=2, 
+//length=30, replacement_cost=2.0,
+//rating="g", special_features="Trailers"
+//where title = "kyle";
+
+
+public boolean updateFilm( int id,String title, String description, int year, int lang, int rentalDur, double rentalrate,
+		int length, double replace, String rating, String SF) {
+	
+	Connection conn;
+	try {
+		conn = DriverManager.getConnection(URL, user, pass);
+		String sql = "UPDATE film "
+				+ "SET title = ?, description= ? , release_year= ?, language_id= ?, rental_duration = ? "
+				+ ", rental_rate= ?, length= ?, replacement_cost = ?, rating= ?, special_features=?"
+				+ "WHERE id = ? ";
+		
+		
+		
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1,  title);
+		stmt.setString(2, description);
+		stmt.setInt(3, year);
+		stmt.setInt(4, lang);
+		stmt.setInt(5, rentalDur);
+		stmt.setDouble(6, rentalrate);
+		stmt.setInt(7, length);
+		stmt.setDouble(8, replace);
+		stmt.setString(9, rating);
+		stmt.setString(10, SF);
+		stmt.setInt(11, id);
+		
+		
+		
+		int updateCount = stmt.executeUpdate();
+		
+		if (updateCount == 1) {
+			return true;
+		}
+		
+		
+		
+		stmt.close();
+		conn.close();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	
+	
+	
+	return false;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

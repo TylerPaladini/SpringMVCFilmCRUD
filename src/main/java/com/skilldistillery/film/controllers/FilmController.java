@@ -108,6 +108,33 @@ public class FilmController {
 		return mv;
 		
 	}
+	@RequestMapping( path="updateFilm.do",method = RequestMethod.GET )
+	public ModelAndView updateFilm( int filmId, String filmTitle, String filmDescription, int filmYear, int filmLanguage, int filmrentalDuration,
+			double filmRentalRate, int filmLength, double filmReplacementCost, String filmRating, String filmSF,  RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		boolean updated;
+		
+			updated = fdao.updateFilm(filmId, filmTitle, filmDescription, filmYear, filmLanguage, filmrentalDuration,
+					filmRentalRate, filmLength, filmReplacementCost, filmRating, filmSF);
+					
+					
+			redir.addFlashAttribute("updated", updated);
+			mv.setViewName("filmUpdated.do");
+	
+		
+		return mv;
+	}
+	
+	@RequestMapping( path ="filmUpdated.do", method=RequestMethod.GET)
+	public ModelAndView filmUpdated () {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/views/home.jsp");
+		
+		return mv;
+		
+	}
+		
+	
 	
 	
 	

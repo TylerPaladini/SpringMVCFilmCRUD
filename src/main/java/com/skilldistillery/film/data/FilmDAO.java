@@ -13,5 +13,7 @@ public interface FilmDAO {
 	Film getFilmById(int filmId) throws SQLException;
 	List<Actor> getActorsByFilmId(int filmId) throws SQLException;
 	public boolean deleteFilm ( int filmId ) throws SQLException;
+	public boolean updateFilm( int id,String title, String description, int year, int lang, int rentalDur, double rentalrate,
+			int length, double replace, String rating, String SF);
 
 }
