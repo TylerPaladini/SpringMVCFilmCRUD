@@ -38,13 +38,13 @@ public class FilmController {
 	}
 
 	
-	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-	public ModelAndView getFilmByKeyword(String keyword) {
+	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET, params = "Keyword")
+	public ModelAndView getFilmByKeyword(String Keyword) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> kSearch = new ArrayList<>();
 
 		try {
-			kSearch = fdao.getFilmByKeyword( keyword );
+			kSearch = fdao.getFilmByKeyword( Keyword );
 			System.out.println("*******************" + kSearch);
 			mv.addObject("film", kSearch);
 			mv.setViewName("WEB-INF/views/results.jsp");

@@ -108,8 +108,6 @@ public class FilmIMPDAO implements FilmDAO {
 		stmt.setString(1, "%" + keyword + "%");
 		stmt.setString(2, "%" + keyword + "%");
 		ResultSet filmResult = stmt.executeQuery();
-		System.out.println(sql);
-		System.out.println(stmt.toString());
 		while (filmResult.next()) {
 			film = new Film();
 
@@ -129,7 +127,7 @@ public class FilmIMPDAO implements FilmDAO {
 			// actor.setLastName(filmResult.getString( "actor.last_name" ));
 			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
 			films.add(film);
-
+			System.out.println(films);
 		}
 		filmResult.close();
 		stmt.close();
