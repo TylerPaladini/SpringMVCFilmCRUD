@@ -55,11 +55,11 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "newFilm.do", method = RequestMethod.POST, 
-			params = {"Title", "Description", "ReleaseYear", "FilmLength", "SpecialFeatures"})
-	public ModelAndView addFilm ( String Title, String Description, int ReleaseYear,  int FilmLength, String SpecialFeatures, RedirectAttributes redir) {
+	@RequestMapping(path = "newFilm.do", method = RequestMethod.GET, 
+			params = {"Title", "Description", "ReleaseYear", "FilmLength"})
+	public ModelAndView addFilm ( String Title, String Description, int ReleaseYear,  int FilmLength, RedirectAttributes redir) {
 		
-		Film newFilm = new Film(0,Title, Description, ReleaseYear, "1", 0, 2.99, FilmLength, 5.99, "G", SpecialFeatures, null);
+		Film newFilm = new Film(0,Title, Description, ReleaseYear, 1, 0, 2.99, FilmLength, 5.99, "G", null, null);
 		
 		
 		ModelAndView mv = new ModelAndView();

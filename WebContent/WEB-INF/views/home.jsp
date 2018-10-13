@@ -30,7 +30,7 @@
 		<input type="submit" value="Add Film">
 	</form> -->
 	
-	<form  action="newFilm.do" method="POST">
+	<form  action="newFilm.do" method="GET">
     
         <h4>Add Your Film</h4>
         
@@ -42,15 +42,12 @@
             
             <label for="releaseYear"> Film Year</label> 
             <input type="text" name="ReleaseYear" size="60"/><br>    
-              
-            <label for="language">Language</label> 
-            <input type="text" name="Language" size="60"/><br>      
+                    
             
             <label for="filmLength">Length of Film</label> 
             <input type="text" name="FilmLength" size="60"/><br>      
             
-            <label for="specialFeatures">Film Special Features</label> 
-            <input type="text" name="SpecialFeatures" size="60"/><br>      
+                
             
     		<input type="submit">
         

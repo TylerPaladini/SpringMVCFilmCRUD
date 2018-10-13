@@ -35,8 +35,8 @@ public class FilmIMPDAO implements FilmDAO {
 
 		Film film = null;
 		Actor actor = null;
-		String sql = "select film.id, title, description, release_year, language.name, rental_duration, rental_rate, length, replacement_cost,"
-				+ " rating, special_features" + "  from film join language on film.language_id = language.id "
+		String sql = "select film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost,"
+				+ " rating, special_features from film "
 				+ "where film.id = ?";
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class FilmIMPDAO implements FilmDAO {
 			film.setTitle(filmResult.getString("title"));
 			film.setDescription(filmResult.getString("description"));
 			film.setReleaseYear(filmResult.getInt("release_year"));
-			film.setLanguage(filmResult.getString("language.name"));
+			film.setLanguage_id(filmResult.getInt("language_id"));
 			film.setRentalDuration(filmResult.getInt("rental_duration"));
 			film.setRentalRate(filmResult.getDouble("rental_rate"));
 			film.setLength(filmResult.getInt("length"));
@@ -101,8 +101,8 @@ public class FilmIMPDAO implements FilmDAO {
 		List<Film> films = new ArrayList<>();
 		Film film = null;
 		Actor actor = null;
-		String sql = "select film.id, title, description, release_year, language.name, rental_duration, rental_rate, length, replacement_cost,"
-				+ " rating, special_features " + "  from film join language on film.language_id = language.id "
+		String sql = "select film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost,"
+				+ " rating, special_features   from film "
 				+ "where title like ? or description like ?";
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -116,7 +116,7 @@ public class FilmIMPDAO implements FilmDAO {
 			film.setTitle(filmResult.getString("title"));
 			film.setDescription(filmResult.getString("description"));
 			film.setReleaseYear(filmResult.getInt("release_year"));
-			film.setLanguage(filmResult.getString("language.name"));
+			film.setLanguage_id(filmResult.getInt("language_id"));
 			film.setRentalDuration(filmResult.getInt("rental_duration"));
 			film.setRentalRate(filmResult.getDouble("rental_rate"));
 			film.setLength(filmResult.getInt("length"));
@@ -140,22 +140,20 @@ public class FilmIMPDAO implements FilmDAO {
 	@Override
 	public boolean addFilm(Film film) throws SQLException {
 		boolean output = false;
-		String sql = "INSERT INTO film (title, description, release_year, language_id, "
-				+ "rental_duration, rental_rate, length, replacement_cost, rating, "
-				+ "special_features ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO film (title, description, release_year, "
+				+ " language_id, length ) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 		PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		ResultSet filmResult = stmt.executeQuery();
 		stmt.setString(1, film.getTitle());
 		stmt.setString(2, film.getDescription());
 		stmt.setInt(3, film.getReleaseYear());
-		stmt.setString(4, film.getLanguage());
-		stmt.setInt(5, film.getRentalDuration());
-		stmt.setDouble(6, film.getRentalRate());
-		stmt.setInt(7, film.getLength());
-		stmt.setDouble(8, film.getReplacementCost());
-		stmt.setString(9, film.getRating());
-		stmt.setString(10, film.getSpecialFeature());
+		stmt.setInt(4, film.getLanguage_id());
+		
+		
+		stmt.setInt(5, film.getLength());
+		
+	
+		
 		
 		int updateCount = stmt.executeUpdate();
 
@@ -176,7 +174,7 @@ public class FilmIMPDAO implements FilmDAO {
 		
 		
 		
-		filmResult.close();
+		
 		stmt.close();
 		conn.close();
 		return output;
