@@ -43,7 +43,8 @@ public class FilmController {
 		List<Film> kSearch = new ArrayList<>();
 
 		try {
-			kSearch = fdao.getFilmByKeyword(keyword);
+			kSearch = fdao.getFilmByKeyword( keyword );
+			System.out.println("*******************" + kSearch);
 			mv.addObject("film", kSearch);
 			mv.setViewName("WEB-INF/views/results.jsp");
 			
