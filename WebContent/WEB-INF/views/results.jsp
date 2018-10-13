@@ -15,7 +15,19 @@
 <c:forEach items="${film}" var="filmItem">
 
 ${filmItem} <br>
+
+		<form action="deleteFilm.do" method="POST">
+		
+		<input name="filmId" value="${filmItem.id }"/>
+		<input type="Submit" value="Delete Film"/>
+		
+		
+		</form>
+		
 </c:forEach>
+
+
+		
 
 	
 
