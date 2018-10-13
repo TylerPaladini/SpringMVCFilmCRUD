@@ -143,48 +143,48 @@ public class FilmIMPDAO implements FilmDAO {
 	@Override
 	public boolean addFilm(Film film) {
 		boolean output = false;
-		
-		
-
-		List<Film> films = new ArrayList<>();
-		Film film2 = null;
-		Actor actor = null;
-		String sql = "INSERT INTO film (title, description, release_year, language_id, "
-				+ "rental_duration, rental_rate, length, replacement_cost, rating, "
-				+ "special_features ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Connection conn = DriverManager.getConnection(URL, user, pass);
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, "%" + keyword + "%");
-		stmt.setString(2, "%" + keyword + "%");
-		ResultSet filmResult = stmt.executeQuery();
-		while (filmResult.next()) {
-			film = new Film();
-
-			film.setId(filmResult.getInt("film.id"));
-			film.setTitle(filmResult.getString("title"));
-			film.setDescription(filmResult.getString("description"));
-			film.setReleaseYear(filmResult.getInt("release_year"));
-			film.setLanguage(filmResult.getString("language.name"));
-			film.setRentalDuration(filmResult.getInt("rental_duration"));
-			film.setRentalRate(filmResult.getDouble("rental_rate"));
-			film.setLength(filmResult.getInt("length"));
-			film.setReplacementCost(filmResult.getDouble("replacement_cost"));
-			film.setRating(filmResult.getString("rating"));
-			film.setSpecialFeature(filmResult.getString("special_features"));
-			// actor.setId( filmResult.getInt( "actor.id" ));
-			// actor.setFirstName(filmResult.getString( "actor.first_name" ));
-			// actor.setLastName(filmResult.getString( "actor.last_name" ));
-			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
-			films.add(film);
-
-		}
-		filmResult.close();
-		stmt.close();
-		conn.close();
-
-	
-		
-		
+//		
+//		
+//
+//		List<Film> films = new ArrayList<>();
+//		Film film2 = null;
+//		Actor actor = null;
+//		String sql = "INSERT INTO film (title, description, release_year, language_id, "
+//				+ "rental_duration, rental_rate, length, replacement_cost, rating, "
+//				+ "special_features ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//		Connection conn = DriverManager.getConnection(URL, user, pass);
+//		PreparedStatement stmt = conn.prepareStatement(sql);
+//		stmt.setString(1, "");
+//		stmt.setString(2, "");
+//		ResultSet filmResult = stmt.executeQuery();
+//		while (filmResult.next()) {
+//			film = new Film();
+//
+//			film.setId(filmResult.getInt("film.id"));
+//			film.setTitle(filmResult.getString("title"));
+//			film.setDescription(filmResult.getString("description"));
+//			film.setReleaseYear(filmResult.getInt("release_year"));
+//			film.setLanguage(filmResult.getString("language.name"));
+//			film.setRentalDuration(filmResult.getInt("rental_duration"));
+//			film.setRentalRate(filmResult.getDouble("rental_rate"));
+//			film.setLength(filmResult.getInt("length"));
+//			film.setReplacementCost(filmResult.getDouble("replacement_cost"));
+//			film.setRating(filmResult.getString("rating"));
+//			film.setSpecialFeature(filmResult.getString("special_features"));
+//			// actor.setId( filmResult.getInt( "actor.id" ));
+//			// actor.setFirstName(filmResult.getString( "actor.first_name" ));
+//			// actor.setLastName(filmResult.getString( "actor.last_name" ));
+//			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
+//			films.add(film);
+//
+//		}
+//		filmResult.close();
+//		stmt.close();
+//		conn.close();
+//
+//	
+//		
+//		
 		return output;
 	}
 
