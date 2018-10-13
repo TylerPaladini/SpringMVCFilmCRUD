@@ -224,8 +224,8 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film id=" + id + ", title=" + title + ", releaseYear=" + releaseYear +", description=" + description + " ,Language=" + language + ", " 
-	+  "actors: " + printActors();
+		return "Film ID: " + id + ", Title: " + title + ", Release Year: " + releaseYear +", Description: " + description + " , Language: " + language + ", " 
+	+  "Actors: " + printActors();
 	
 	}
 	public String printActors() {
