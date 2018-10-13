@@ -54,26 +54,35 @@ public class FilmController {
 		}
 		return mv;
 	}
-	//public boolean addFilm(Film film);
-//	
-//	@RequestMapping(path = "newFilm.do", method = RequestMethod.POST)
-//	public ModelAndView addFilm ( Film film, RedirectAttributes redir) {
-//		boolean added = fdao.addFilm(film);
-//		
-//		ModelAndView mv = new ModelAndView();
-//		redir.addFlashAttribute("filmAdd", added );
-//		mv.setViewName("filmAdded.do");
-//		
-//		return mv;
-//	}
-//	@RequestMapping( path ="filmAdded.do", method=RequestMethod.GET)
-//	public ModelAndView filmAdded () {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("/WEB-INF/views/home.jsp");
-//		
-//		return mv;
-//		
-//	}
+	
+	@RequestMapping(path = "newFilm.do", method = RequestMethod.POST, 
+			params = {"Title", "Description", "ReleaseYear", "FilmLength", "SpecialFeatures"})
+	public ModelAndView addFilm ( String Title, String Description, int ReleaseYear,  int FilmLength, String SpecialFeatures, RedirectAttributes redir) {
+		
+		Film newFilm = new Film(0,Title, Description, ReleaseYear, "1", 0, 2.99, FilmLength, 5.99, "G", SpecialFeatures, null);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		try {
+			boolean added = fdao.addFilm( newFilm );
+			redir.addFlashAttribute("filmAdd", added );
+			mv.setViewName("filmAdded.do");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mv;
+		
+		
+	}
+	@RequestMapping( path ="filmAdded.do", method=RequestMethod.GET)
+	public ModelAndView filmAdded () {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/views/home.jsp");
+		
+		return mv;
+		
+	}
 //	
 //	@RequestMapping( path="deleteFilm.do",method = RequestMethod.POST )
 //	public ModelAndView deleteFilm( String keyword, RedirectAttributes redir) {

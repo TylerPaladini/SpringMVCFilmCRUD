@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,7 +144,7 @@ public class FilmIMPDAO implements FilmDAO {
 				+ "rental_duration, rental_rate, length, replacement_cost, rating, "
 				+ "special_features ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection conn = DriverManager.getConnection(URL, user, pass);
-		PreparedStatement stmt = conn.prepareStatement(sql);
+		PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		ResultSet filmResult = stmt.executeQuery();
 		stmt.setString(1, film.getTitle());
 		stmt.setString(2, film.getDescription());
@@ -155,6 +156,24 @@ public class FilmIMPDAO implements FilmDAO {
 		stmt.setDouble(8, film.getReplacementCost());
 		stmt.setString(9, film.getRating());
 		stmt.setString(10, film.getSpecialFeature());
+		
+		int updateCount = stmt.executeUpdate();
+
+		if (updateCount == 1) {
+			ResultSet keys = stmt.getGeneratedKeys();
+			if (keys.next()) {
+				int newFilmId = keys.getInt(1);
+				film.setId(newFilmId);
+			}
+
+
+			}
+		else {
+			film = null;
+
+		}
+		
+		
 		
 		
 		filmResult.close();
