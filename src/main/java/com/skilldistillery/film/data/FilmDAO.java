@@ -12,5 +12,6 @@ public interface FilmDAO {
 	public boolean addFilm(Film film) throws SQLException;
 	Film getFilmById(int filmId) throws SQLException;
 	List<Actor> getActorsByFilmId(int filmId) throws SQLException;
+	public boolean deleteFilm ( int filmId ) throws SQLException;
 
 }

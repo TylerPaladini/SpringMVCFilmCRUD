@@ -83,26 +83,32 @@ public class FilmController {
 		return mv;
 		
 	}
-//	
-//	@RequestMapping( path="deleteFilm.do",method = RequestMethod.POST )
-//	public ModelAndView deleteFilm( String keyword, RedirectAttributes redir) {
-//		boolean deleted = fdao.deleteFilm(keyword);
-//		ModelAndView mv = new ModelAndView();
-//		redir.addFlashAttribute("deleted", deleted );
-//		mv.setViewName("filmDeleted.do");
-//		
-//		return mv;
-//		
-//	}
-//	@RequestMapping( path ="filmDeleted.do", method=RequestMethod.GET)
-//	public ModelAndView filmDeleted () {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("/WEB-INF/views/home.jsp");
-//		
-//		return mv;
-//		
-//	}
-//	
+	
+	@RequestMapping( path="deleteFilm.do",method = RequestMethod.GET )
+	public ModelAndView deleteFilm( int filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		boolean deleted;
+		try {
+			deleted = fdao.deleteFilm( filmId );
+			redir.addFlashAttribute("deleted", deleted );
+			mv.setViewName("filmDeleted.do");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mv;
+		
+	}
+	@RequestMapping( path ="filmDeleted.do", method=RequestMethod.GET)
+	public ModelAndView filmDeleted () {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/views/home.jsp");
+		
+		return mv;
+		
+	}
+	
 	
 	
 

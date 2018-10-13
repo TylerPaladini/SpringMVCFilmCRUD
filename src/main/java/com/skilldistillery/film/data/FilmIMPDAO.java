@@ -180,12 +180,12 @@ public class FilmIMPDAO implements FilmDAO {
 		return output;
 	}
 	
-public boolean deleteFilm ( String filmId ) throws SQLException {
+public boolean deleteFilm ( int filmId ) throws SQLException {
 		
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 		String sql = "delete from film where film.id = ( ? )";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1,  filmId );
+		stmt.setInt(1,  filmId );
 		
 		int updateCount = stmt.executeUpdate();
 		
