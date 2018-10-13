@@ -128,7 +128,7 @@ public class FilmIMPDAO implements FilmDAO {
 			// actor.setId( filmResult.getInt( "actor.id" ));
 			// actor.setFirstName(filmResult.getString( "actor.first_name" ));
 			// actor.setLastName(filmResult.getString( "actor.last_name" ));
-			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
+//			film.setActor(getActorsByFilmId(filmResult.getInt("film.id")));
 			films.add(film);
 
 		}
