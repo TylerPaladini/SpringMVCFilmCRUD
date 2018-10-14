@@ -33,42 +33,137 @@
 			</form>
 			</p>
 		</div>
-<div class="row">
-  <div class="column">
-  Column One
-  </div>
-  <div class="column">
-  Column Two
-  </div>
-</div>
 
 		<c:choose>
 				<c:when test="${ not empty film }">
-					<c:forEach items="${film}" var="filmItem">
+				<div class="row">
+					<div class="col-xs-6">
+						<div>
+						test
+				
 					<p>
-						${filmItem}
+						<h3>Film</h3>
+					</p>
+					<table>
+					<c:forEach items="${film}" var="filmItem">
+					<tr>
+					<td>Film ID: </td>
+					<td><c:out value="${filmItem.id }"/></td>
+					<tr>
+					<td>Title: </td>
+					<td><c:out value="${filmItem.title }"/></td>
+					</tr>
+					<tr>
+					<td>Description: </td>
+					<td><c:out value="${filmItem.description }"/></td>
+					</tr>
+					<tr>
+					<td>Year: </td>
+					<td><c:out value="${filmItem.releaseYear }"/></td>
+					</tr>
+					<tr>
+					<td>Language: </td>
+					<td><c:out value="${filmItem.language_id }"/></td>
+					</tr>
+					</table>
+					</td>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div>
+						test
+					
+					<td>
+					<p>
+						<h3>Update Film</h3>
 					</p>
 					<p>
+					<table>
+					<tr>
 						<form action="updateFilm.do" method="GET">
-						<p>
+						
 							<input type="hidden" name="filmId" value="${filmItem.id }" /> <br>
-							<input type="text" name="filmTitle" value="${filmItem.title }" />
-							<br> <input type="text" name="filmDescription"
-								value="${filmItem.description }" /> <br> <input
-								type="text" name="filmYear" value="${filmItem.releaseYear }" />
-							<br> <input type="text" name="filmLanguage"
-								value="${filmItem.language_id }" /> <br> <input
-								type="text" name="filmrentalDuration"
-								value="${filmItem.rentalDuration }" /> <br> <input
-								type="text" name="filmRentalRate"
-								value="${filmItem.rentalRate }" /> <br> <input type="text"
-								name="filmLength" value="${filmItem.length}" /> <br> <input
-								type="text" name="filmReplacementCost"
-								value="${filmItem.replacementCost}" /> <br> <input
-								type="text" name="filmRating value=" ${filmItem.rating}" /> <br>
-							<input type="text" name="filmSF"
-								value="${filmItem.specialFeature}" /> <br> 
-						</p>
+					<td>
+							<label for="title">Title</label>
+					</td>
+					<td>
+							<input id="title" type="text" name="filmTitle" value="${filmItem.title }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="desc">Description</label>
+					</td>
+					<td>
+							<input id="desc" type="text" name="filmDescription" value="${filmItem.description }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="year">Year</label>
+					</td>
+					<td>
+							<input id="year" type="text" name="filmYear" value="${filmItem.releaseYear }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+					
+							<label for="lang">Language</label>
+					</td>
+					<td>
+							<input id="lang" type="text" name="filmLanguage" value="${filmItem.language_id }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="dura">Duration</label>
+					</td>
+					<td>
+							<input id="dura" type="text" name="filmrentalDuration" value="${filmItem.rentalDuration }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="rate">Rate</label>
+					</td>
+					<td>
+							<input id="rate" type="text" name="filmRentalRate" value="${filmItem.rentalRate }" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="length">Length</label>
+					</td>
+					<td>
+							<input id="length" type="text" name="filmLength" value="${filmItem.length}" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="replace">Replacement Cost</label>
+					</td>
+					<td>
+							<input id="replace" type="text" name="filmReplacementCost" value="${filmItem.replacementCost}" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="rating">Rating</label>
+					</td>
+					<td>
+							<input id="rating" type="text" name="filmRating value=" ${filmItem.rating}" />
+					</td>
+					</tr>
+					<tr>
+					<td>
+							<label for="sf">Special Features</label>
+					</td>
+					<td>
+							<input id="sf" type="text" name="filmSF" value="${filmItem.specialFeature}" /> <br>
+						
+					</tr>
+					</table>
 								<p>
 								<input type="Submit" value="Update Film" />
 								</p>
@@ -80,6 +175,10 @@
 							<input type="Submit" value="Delete Film" />
 						</form>
 						</p>
+						</div>
+					</div>
+				</div>
+				
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
