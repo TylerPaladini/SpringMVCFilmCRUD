@@ -23,13 +23,5 @@ We learned that it is paramount when working in a group to constantly communicat
 
 
 
-
-
 #### Built by Beards ####
-
-
-
-
-
-
 ![logo](built_by_beards.png)
