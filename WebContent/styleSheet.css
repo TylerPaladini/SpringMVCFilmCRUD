@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body {
+	background-image:url("images/blog_filmcontest_2018.jpeg");
+	background-size: cover;
+}
+
+h4, h1 {
+	color: gold;
+
+}
+
+input {
+	color: grey;
+	
+}
+
+p {
+	color: grey;
+}
+
+
+#bpic {
+	position: relative;
+	height: 120px;
+	width:120px;
+	top: 200px;
+	left: 20px;
+}
