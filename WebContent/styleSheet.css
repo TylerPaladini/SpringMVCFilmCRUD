@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+  background-image: url("https://www.hull.ac.uk/editor-assets/images/Film-Studies/flimstudies2.jpg");
+} 
+
+h4, h1 {
+	color: gold;
+}
+
+input {
+	color: grey;
+}
+
+p {
+	color: grey;
+}
