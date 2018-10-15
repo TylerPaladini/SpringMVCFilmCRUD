@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+body{
+	background-color: black;
+}
+
+h1{
+	color: orange;
+	position: relative;
+	left: 42%;
+}
+#bpic{
+	position: relative;
+	left: 36%;
+	height: 380px;
+	width:  380px;
+	margin-bottom: 0px;
+	padding-bottom: 5px;
+	
+}
+
+#button {
+	position: relative;
+	left: 47%;
+}
+ #message{
+	color: orange;
+	position: relative;
+	left: 42%;
+}
+
+#beards{
+	color: orange;
+	position: relative;
+	font-size: 100px;
+	left: 27%;
+	bottom: 20%;
+	
+}

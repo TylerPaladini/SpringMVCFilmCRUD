@@ -78,7 +78,7 @@ public class FilmController {
 	@RequestMapping( path ="filmAdded.do", method=RequestMethod.GET)
 	public ModelAndView filmAdded () {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/WEB-INF/views/home.jsp");
+		mv.setViewName("/WEB-INF/views/conformation.jsp");
 		
 		return mv;
 		
@@ -103,7 +103,7 @@ public class FilmController {
 	@RequestMapping( path ="filmDeleted.do", method=RequestMethod.GET)
 	public ModelAndView filmDeleted () {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/WEB-INF/views/home.jsp");
+		mv.setViewName("/WEB-INF/views/conformation.jsp");
 		
 		return mv;
 		
@@ -128,7 +128,7 @@ public class FilmController {
 	@RequestMapping( path ="filmUpdated.do", method=RequestMethod.GET)
 	public ModelAndView filmUpdated () {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/WEB-INF/views/home.jsp");
+		mv.setViewName("/WEB-INF/views/conformation.jsp");
 		
 		return mv;
 		
