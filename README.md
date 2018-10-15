@@ -32,4 +32,4 @@ We learned that it is paramount when working in a group to constantly communicat
 
 
 
-![Built by Beards](built_by_beards.png)
+![logo](built_by_beards.png)
