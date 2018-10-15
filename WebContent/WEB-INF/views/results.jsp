@@ -197,7 +197,7 @@
 					<br>
 								<p>
 								<input type="Submit" value="Update Film"
-								class="btn btn-primary btn-lg" />
+								class="btn btn-success btn-lg" />
 								</p>
 						</form>
 					</p>
@@ -206,7 +206,7 @@
 						<form action="deleteFilm.do" method="GET">
 							<input type="hidden" name="filmId" value="${filmItem.id }" /> 
 							<input type="Submit" value="Delete Film"
-								class="btn btn-primary btn-lg" />
+								class="btn btn-danger btn-lg" />
 						</form>
 						</p>
 						<hr>
